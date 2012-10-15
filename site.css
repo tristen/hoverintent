@@ -1,0 +1,97 @@
+/* ------------------------------------------
+  Reset ♥
+  http://meyerweb.com/eric/tools/css/reset/
+  v2.0 | 20110126
+  License: none (public domain)
+---------------------------------------------*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin:0;
+  padding:0;
+  border:0;
+  font-size:100%;
+  font:inherit;
+  vertical-align:baseline;
+  }
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display:block;
+  }
+body { line-height:1; }
+ol, ul { list-style:none;  }
+blockquote, q { quotes:none; }
+blockquote:before, blockquote:after,
+q:before, q:after { content:''; content:none; }
+/* tables still need 'cellspacing="0"' in the markup */
+table { border-collapse: collapse; border-spacing:0; }
+/* remember to define focus styles. Hee Haw */
+:focus { outline:0; }
+
+/*-----------------------------------
+  Typography
+-------------------------------------*/
+body {
+  font:500 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color:#000;
+  margin:0; padding:0;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  }
+
+ul.demo {
+  background:#9cc;
+  display:block;
+  width:100%;
+  height:75px;
+  }
+ul.demo li {
+  background:#fcc;
+  display:block;
+  width:25%;
+  height:50px;
+  float:left;
+  position:relative;
+  overflow:hidden;
+  cursor:default;
+  }
+ul.demo li.p2   { background:#ffc;}
+ul.demo li.p3   { background:#cfc;}
+ul.demo li.p4   { background:#ccf;}
+ul.demo li span {
+  background:#eef;
+  display:block;
+  margin:4px;
+  cursor:default;
+  }
+
+/*-----------------------------------
+  Lil Helpers
+-------------------------------------*/
+.centered {
+  display:block;
+  text-align:center;
+  }
+
+/*Markup free clearing
+Details: http: //perishablepress.com/press/2009/12/06/new-clearfix-hack*/
+.clearfix:after {
+  content:'';
+  display:block;
+  height:0;
+  clear:both;
+  visibility:hidden;
+  }
+* html .clearfix { height:1%; }
+*:first-child + html .clearfix { min-height:1%; }

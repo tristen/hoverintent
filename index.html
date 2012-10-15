@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title></title>
+<link rel='stylesheet' href='site.css' />
+<script src='hoverIntent.js'></script>
+<style>
+</style>
+</head>
+<body>
+  <ul class='demo' id='demo'>
+    <li id='hover' class='p1'>&nbsp;</li>
+    <li class='p2'>&nbsp;</li>
+    <li class='p3'>&nbsp;</li>
+    <li class='p4'><span>hover ignores over/out events from children</span></li>
+  </ul>
+
+<script>
+  var options = {
+    timeout:1000
+    }
+
+  hoverintent(document.getElementById('hover'), function() {
+     // function to fire when the cursor is over the element.
+    console.log('hee haw');
+  }, function() {
+     // function to fire when the cursor is over the element.
+    console.log('haw hee');
+  }, options);
+</script>
+</body>
+</html>
