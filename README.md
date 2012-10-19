@@ -14,7 +14,7 @@ has slowed down enough.
 <script src='hoverintent.min.js'></script>
 <script>
   var element = document.getElementById('element-id');
-  hoverintent(element,
+  var hover = new HoverIntent().hover(element,
   function() {
     // Handler in
   }, function() {
@@ -30,21 +30,6 @@ Like the original plugin you can adjust mouse sensitivity or the length of time 
 | sensitivity | <pre>sensitivity: 7</pre> | The value (in pixels) the mouse cursor should not travel beyond while hoverintent waits to trigger the mouseover event. |
 | interval | <pre>interval: 100</pre> | The length of time hoverintent waits to re-read mouse coordinates. |
 | timeout | <pre>timeout: 0</pre> | The length of time the mouseout event is fired. |
-
-## Ender support
-Add `hoverintent` as an internal chain method to your [Ender](http://ender.no.de) compilation.
-
-``` shell
-$ ender add hoverintent
-```
-
-Use it:
-
-``` js
-$('.element').hoverintent(
-    // events
-);
-```
 
 ## Building
 
