@@ -4,30 +4,95 @@
 <meta charset=utf-8 />
 <title></title>
 <link rel='stylesheet' href='site.css' />
-<script src='hoverIntent.js'></script>
+<link href='http://tristen.ca/global.css' rel='stylesheet'>
 <style>
 </style>
 </head>
 <body>
-  <ul class='demo' id='demo'>
-    <li id='hover' class='p1'>&nbsp;</li>
-    <li class='p2'>&nbsp;</li>
-    <li class='p3'>&nbsp;</li>
-    <li class='p4'><span>hover ignores over/out events from children</span></li>
-  </ul>
+<div id='masthead'>
+  <div class='limiter clearfix'>
+    <div class='col4'>
+      <div class='inner'>
+        <h2>Tristen Brown</h2>
+        <p>A Coder/Designer at <a href='http://mapbox.com'>MapBox.</a></p>
+        <a href='http://tristen.ca' class='icon home' title='Homepage'>Home</a>
+        <a href='http://twitter.com/fallsemo' class='icon twitter' title='Twitter'>Twitter</a>
+        <a href='http://github.com/tristen' class='icon github' title='GitHub'>Github</a>
+      </div>
+    </div>
+    <div>
+      <div class='inner'>
+        <h3>Projects</h3>
+        <ul id='tristen-projects'></ul>
+      </div>
+    </div>
+    <a href='#' id='t-toggle'><span>t</span></a>
+  </div>
+</div>
 
+  <ul class='examples'>
+    <li id='first'>
+      Plain old hover
+      <span class='popup'>Hi there</span>
+    </li>
+    <li id='second'>
+      hoverintent.js
+      <span class='popup'>Hi there</span>
+    </li>
+    <li id='third'>
+      Custom settings
+      <span class='popup'>Hi there</span>
+    </li>
+  </ul>
+<script src='http://tristen.ca/site.js'></script>
+<script src='hoverIntent.js'></script>
+<script>
+  var masthead = new Tristen();
+  masthead.masthead();
+</script>
 <script>
   var options = {
-    timeout:1000
+    timeout:500
     }
 
-  hoverintent(document.getElementById('hover'), function() {
-     // function to fire when the cursor is over the element.
-    console.log('hee haw');
-  }, function() {
-     // function to fire when the cursor is over the element.
-    console.log('haw hee');
+  var first = document.getElementById('first');
+  var second = document.getElementById('second');
+  var third = document.getElementById('third');
+
+  addEvent(first, 'mouseover', function() { first.className = 'on';  });
+  addEvent(first, 'mouseout', function()  { first.className = 'off'; });
+
+  var hoverTwo = new HoverIntent().hover(second, function() {
+    second.className = 'on';
+  }, function(e) {
+    second.className = 'off';
+  });
+
+  var hoverThree = new HoverIntent(options).hover(third, function() {
+    third.className = 'on';
+  }, function(e) {
+    third.className = 'off';
   }, options);
+
+  // cross-browser events
+  function addEvent(object, event, method) {
+    if (object.attachEvent) {
+      object['e'+event+method] = method;
+      object[event+method] = function(){object['e'+event+method](window.event);};
+      object.attachEvent('on'+event, object[event+method]);
+    } else {
+      object.addEventListener(event, method, false);
+    }
+  }
+
+  function removeEvent(object, event, method) {
+    if (object.detachEvent) {
+      object.detachEvent('on'+event, object[event+method]);
+      object[event+method] = null;
+    } else {
+      object.removeEventListener(event, method, false);
+    }
+  }
 </script>
 </body>
 </html>

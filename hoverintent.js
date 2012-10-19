@@ -1,75 +1,26 @@
-;(function(global){
-    'use strict';
-
+//  hoverintent.js
+//  tristen @fallsemo
+!function(window, document, undefined) {
     var x, y, pX, pY;
-    var options,
-        state = 0,
+    var state = 0,
         timer = 0;
 
-    function hoverIntent(el, over, out, configuration) { 
-        configuration === undefined ? options = {} : options = configuration;
-        options.sensitivity = getOption('sensitivity', 7);
-        options.interval = getOption('interval', 100);
-        options.timeout = getOption('timeout', 0);
-
-        addEvent(el, 'mouseover', function(e) { dispatchOver(e, over); });
-        addEvent(el, 'mouseout', function(e) { dispatchOut(e, out); });
-    }
-
-    function getOption(name, defaultValue) {
-        return options[name] !== undefined ? options[name] : defaultValue;
-    }
-
-    function track(e) { x = e.pageX; y = e.pageY; }
-
-    function compare(self, overEvent) {
-        if (timer) timer = clearTimeout(timer);
-        if ((Math.abs(pX - x) + Math.abs(pY - y)) < options.sensitivity) {
-            removeEvent(self, 'mousemove', track);
-            state = 1;
-            return overEvent();
+    function merge(obj) {
+        for (var i = 1; i < arguments.length; i++) {
+            var def = arguments[i];
+            for (var n in def) {
+                if (obj[n] === undefined) obj[n] = def[n];
+            }
         }
-    }
-
-    function delay(self, outEvent) {
-        if (timer) timer = clearTimeout(timer);
-        state = 0;
-        return outEvent();
-    }
-
-    function dispatchOver(e, overEvent) {
-        var self = e.currentTarget;
-        if (timer) timer = clearTimeout(timer);
-
-        pX = e.pageX;
-        pY = e.pageY;
-        addEvent(self, 'mousemove', track(e));
-
-        if(state !== 1) {
-            timer = setTimeout(function() {
-                compare(self, overEvent);
-            }, options.interval);
-        }
-    }
-
-    function dispatchOut(e, outEvent) {
-        var self = e.currentTarget;
-        if (timer) timer = clearTimeout(timer);
-
-        removeEvent(self, 'mousemove', track(e));
-        if (state === 1) {
-            timer = setTimeout(function() {
-                delay(self, outEvent);
-            }, options.timeout);
-        }
+        return obj;
     }
 
     // cross-browser events
     function addEvent(object, event, method) {
         if (object.attachEvent) {
-            object['e' + event + method] = method;
-            object[event + method] = function(){object['e' + event + method](window.event);};
-            object.attachEvent('on' + event, object[event + method]);
+            object['e'+event+method] = method;
+            object[event+method] = function(){object['e'+event+method](window.event);};
+            object.attachEvent('on'+event, object[event+method]);
         } else {
             object.addEventListener(event, method, false);
         }
@@ -84,5 +35,80 @@
         }
     }
 
-    global.hoverintent = hoverIntent;
-})(this);
+    var options = {
+        sensitivity: 7,
+        interval: 100,
+        timeout: 0
+    }
+
+    // Constructor
+    var HoverIntent = function HoverIntent(o) {
+      if (!this.hover) return new HoverIntent(o);
+      this.options = merge(o || {}, HoverIntent.options, options);
+    }
+
+    HoverIntent.options = {};
+
+    merge(HoverIntent.prototype, {
+        hover: function(el, over, out) {
+            var self = this;
+
+            if (el) {
+                addEvent(el, 'mouseover', function(e) { self.dispatch(e, over, true); });
+                addEvent(el, 'mouseout', function(e) { self.dispatch(e, out); });
+            }
+
+            return self;
+        },
+        track: function(e) {
+            x = e.pageX; y = e.pageY;
+            return this;
+        },
+        compare: function(el, overEvent, e) {
+            var self = this;
+            if (timer) timer = clearTimeout(timer);
+            if ((Math.abs(pX - x) + Math.abs(pY - y)) < self.options.sensitivity) {
+                removeEvent(el, 'mousemove', self.track);
+                state = 1;
+                return overEvent(e);
+            } else {
+                pX = x; pY = y;
+                timer = setTimeout(function () {
+                    self.compare(el, overEvent, e);
+                }, self.options.interval);
+            }
+        },
+        delay: function(outEvent, e) {
+            if (timer) timer = clearTimeout(timer);
+            state = 0;
+            return outEvent(e);
+        },
+        dispatch: function(e, event, o) {
+            var self = this,
+                el = e.currentTarget;
+
+            if (timer) timer = clearTimeout(timer);
+            if (o) {
+                pX = e.pageX;
+                pY = e.pageY;
+                addEvent(el, 'mousemove', self.track(e));
+
+                if(state !== 1) {
+                    timer = setTimeout(function() {
+                        self.compare(el, event, e);
+                    }, self.options.interval);
+                }
+            } else {
+                removeEvent(el, 'mousemove', self.track(e));
+                if (state === 1) {
+                    timer = setTimeout(function() {
+                        self.delay(event, e);
+                    }, self.options.timeout);
+                }
+            }
+            return self;
+        }
+    });
+
+    window.HoverIntent = HoverIntent;
+}(window, document);
