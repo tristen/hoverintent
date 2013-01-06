@@ -46,10 +46,7 @@ var hoverintent = function(o) {
         }
     };
 
-    var track = function(e) {
-        x = e.pageX; y = e.pageY;
-        return this;
-    };
+    var track = function(e) { x = e.pageX; y = e.pageY; };
 
     var delay = function(el, outEvent, e) {
         if (timer) timer = clearTimeout(timer);
@@ -64,6 +61,7 @@ var hoverintent = function(o) {
         if (over) {
             pX = e.pageX;
             pY = e.pageY;
+
             addEvent(el, 'mousemove', track(e));
 
             if (state !== 1) {
@@ -106,7 +104,7 @@ var hoverintent = function(o) {
         }
 
         return this;
-    }
+    };
 
     return h;
 };

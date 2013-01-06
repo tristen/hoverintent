@@ -5,7 +5,7 @@
   <title>Hoverintent | Tristen</title>
   <link href='site.css' rel='stylesheet'>
   <link href='http://tristen.ca/global.css' rel='stylesheet'>
-  <!--<script src='http://tristen.ca/site.js'></script>-->
+  <script src='http://tristen.ca/site.js'></script>
   <script src='hoverintent.js'></script>
 </head>
 <body>
@@ -49,29 +49,29 @@
 </div>
 
 <script>
-  // var masthead = new Tristen();
-  // masthead.masthead();
+  var masthead = new Tristen();
+  masthead.masthead();
 
   // The plain ol hover way
   ///////////////////////////
- // var first = document.getElementById('first');
- // addEvent(first, 'mouseover', function(e) {
- //   this.className = 'on';
- // });
- // addEvent(first, 'mouseout', function()  {
- //   this.className = 'off';
- // });
+  var first = document.getElementById('first');
+  addEvent(first, 'mouseover', function(e) {
+    this.className = 'on';
+  });
+  addEvent(first, 'mouseout', function()  {
+    this.className = 'off';
+  });
 
   // A helper function for cross-browser events
- // function addEvent(object, event, method) {
- //   if (object.attachEvent) {
- //     object['e'+event+method] = method;
- //     object[event+method] = function(){object['e'+event+method](window.event);};
- //     object.attachEvent('on'+event, object[event+method]);
- //   } else {
- //     object.addEventListener(event, method, false);
- //   }
- // }
+  function addEvent(object, event, method) {
+    if (object.attachEvent) {
+      object['e'+event+method] = method;
+      object[event+method] = function(){object['e'+event+method](window.event);};
+      object.attachEvent('on'+event, object[event+method]);
+    } else {
+      object.addEventListener(event, method, false);
+    }
+  }
 
   // The hoverintent way
   ///////////////////////////
@@ -95,15 +95,15 @@
   }, options);
 
   // Analytics
-  //var _gaq = _gaq || [];
-  //_gaq.push(['_setAccount', 'UA-15498769-1']);
-  //_gaq.push(['_trackPageview']);
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-15498769-1']);
+  _gaq.push(['_trackPageview']);
 
-  //(function() {
-  //  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-  //  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-  //  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  //})();
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
 
 </script>
 </body>

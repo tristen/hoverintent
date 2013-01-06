@@ -20,13 +20,16 @@ var hoverintent = function(o) {
         return obj;
     };
 
-    // cross-browser events
-    function addEvent(object, event, method) {
-        if (object.addEventListener)
-          object.addEventListener(event, method, false);
-        else if(object.attachEvent)
-          object.attachEvent('on'+event, function(){ method(window.event); });
-      }
+    // Cross browser events
+    var addEvent = function(object, event, method) {
+        if (object.attachEvent) {
+            object['e'+event+method] = method;
+            object[event+method] = function(){object['e'+event+method](window.event);};
+            object.attachEvent('on'+event, object[event+method]);
+        } else {
+            object.addEventListener(event, method, false);
+        }
+    };
 
     var removeEvent = function(object, event, method) {
         if (object.detachEvent) {
@@ -37,13 +40,7 @@ var hoverintent = function(o) {
         }
     };
 
-    options = merge(o || {}, h.options, options);
-    h.options = options;
-
-    var track = function(e) {
-        x = e.pageX; y = e.pageY;
-        return this;
-    };
+    var track = function(e) { x = e.pageX; y = e.pageY; };
 
     var delay = function(el, outEvent, e) {
         if (timer) timer = clearTimeout(timer);
@@ -51,13 +48,14 @@ var hoverintent = function(o) {
         return outEvent.call(el, e);
     };
 
-    var dispatch = function(e, event, o) {
+    var dispatch = function(e, event, over) {
         var el = e.currentTarget;
 
         if (timer) timer = clearTimeout(timer);
-        if (o) {
+        if (over) {
             pX = e.pageX;
             pY = e.pageY;
+
             addEvent(el, 'mousemove', track(e));
 
             if (state !== 1) {
@@ -90,15 +88,17 @@ var hoverintent = function(o) {
         }
     };
 
-    merge(h, {
-        hover: function(el, over, out) {
-            if (el) {
-                addEvent(el, 'mouseover', function(e) { dispatch(e, over, true); });
-                addEvent(el, 'mouseout', function(e) { dispatch(e, out); });
-            }
+    // Public methods
+    h.options = merge(o || {}, options);
 
-            return this;
+    h.hover = function(el, over, out) {
+        if (el) {
+            addEvent(el, 'mouseover', function(e) { dispatch(e, over, true); });
+            addEvent(el, 'mouseout', function(e) { dispatch(e, out); });
         }
-    });
+
+        return this;
+    };
+
     return h;
 };
