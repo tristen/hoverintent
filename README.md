@@ -50,13 +50,31 @@ You can adjust mouse sensitivity or the length of time a mouse over/out event is
 | interval | <pre>interval: 100</pre> | The length of time hoverintent waits to re-read mouse coordinates. |
 | timeout | <pre>timeout: 0</pre> | The length of time the mouseout event is fired. |
 
+## Ender support
+Add `hoverintent` as an internal chain method to your [Ender](http://ender.no.de) compilation.
+
+``` shell
+$ ender add hoverintent
+```
+
+Use it:
+
+``` js
+$('.element').hoverintent().hover(function() {
+    // Handler in
+}, function() {
+    // Handler out
+});
+```
+
 ## Building
 
-Developers can rebuild the minified library by running:
+hoverintent relies on [Grunt](http://gruntjs.com) as its build tool. Run `grunt` to package code
+from any adjustments you make to `src/hoverintent.js`.
 
 ``` bash
-  npm install --dev
-  make
+npm install --dev
+make
 ```
 
 ## Licence
