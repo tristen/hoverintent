@@ -66,12 +66,12 @@ a {
 .fixed-700 {
   display:block;
   width:700px;
-  margin:70px auto;
+  margin:80px auto;
   }
 .intro {
   display:block;
   padding:0 10px;
-  margin:0 0 40px;
+  margin:0 0 80px;
   font-size:27px;
   line-height:38px;
   color:#0e6681;
@@ -98,7 +98,7 @@ a {
   z-index:1000;
   position:absolute;
   left:50%;
-  bottom:110px;
+  bottom:95px;
   width:170px;
   margin-left:-105px;
   border:none;
@@ -148,42 +148,42 @@ a {
 
 /*On Fade in*/
 @-webkit-keyframes fadeInUp {
-	0%    { opacity:0; -webkit-transform:translateY(40px); }
+	0%    { opacity:0; -webkit-transform:translateY(20px); }
 	100%  { opacity:1; -webkit-transform:translateY(0); }
   }
 @-moz-keyframes fadeInUp {
-  0%    { opacity:0; -moz-transform:translateY(40px); }
+  0%    { opacity:0; -moz-transform:translateY(20px); }
 	100%  { opacity:1; -moz-transform:translateY(0); }
   }
 @-o-keyframes fadeInUp {
-	0%    { opacity:0; -o-transform:translateY(40px); }
+	0%    { opacity:0; -o-transform:translateY(20px); }
 	100%  { opacity:1; -o-transform:translateY(0); }
   }
 @keyframes fadeInUp {
-	0%    { opacity:0; transform:translateY(40px); }
+	0%    { opacity:0; transform:translateY(20px); }
 	100%  { opacity:1; transform:translateY(0); }
   }
 
 /*On Fade out*/
 @-webkit-keyframes fadeInUpOut {
 	0%    { opacity:1; -webkit-transform:translateY(0); }
-	50%   { opacity:0.75; -webkit-transform:translateY(-35px); }
-	100%  { opacity:0; -webkit-transform:translateY(-35px); }
+	50%   { opacity:0.75; -webkit-transform:translateY(-15px); }
+	100%  { opacity:0; -webkit-transform:translateY(-15px); }
   }
 @-moz-keyframes fadeInUpOut {
   0%    { opacity:1; -moz-transform:translateY(0); }
-	50%   { opacity:0.75; -moz-transform:translateY(-35px); }
-	100%  { opacity:0; -moz-transform:translateY(-35px); }
+	50%   { opacity:0.75; -moz-transform:translateY(-15px); }
+	100%  { opacity:0; -moz-transform:translateY(-15px); }
   }
 @-o-keyframes fadeInUpOut {
 	0%    { opacity:1; -o-transform:translateY(0); }
-	50%   { opacity:0.75; -o-transform:translateY(-35px); }
-	100%  { opacity:0; -o-transform:translateY(-35px); }
+	50%   { opacity:0.75; -o-transform:translateY(-15px); }
+	100%  { opacity:0; -o-transform:translateY(-15px); }
   }
 @keyframes fadeInUpOut {
 	0%    { opacity:1; transform:translateY(0); }
-	50%   { opacity:0.75; transform:translateY(-35px); }
-	100%  { opacity:0; transform:translateY(-35px); }
+	50%   { opacity:0.75; transform:translateY(-15px); }
+	100%  { opacity:0; transform:translateY(-15px); }
   }
 
 /*-----------------------------------
