@@ -54,6 +54,7 @@ body {
 a {
   color:#8cdcf5;
   text-decoration:none;
+  text-shadow:none;
   -webkit-transition:color 100ms linear;
      -moz-transition:color 100ms linear;
        -o-transition:color 100ms linear;
@@ -75,6 +76,7 @@ a {
   font-size:27px;
   line-height:38px;
   color:#0e6681;
+  text-shadow:0 1px 0 rgba(255,255,255,0.20);
   }
 
   .examples li {
