@@ -1,0 +1,14 @@
+{
+  "name": "hoverintent",
+  "description": "Fire mouse events when the user intends it",
+  "version": "0.0.1",
+  "author": "tristen <@fallsemo>",
+  "ender": "./ender.js",
+  "homepage": "http://tristen.ca/hoverintent",
+  "licenses": [{
+    "type": "MIT"
+  }],
+  "devDependencies": {
+    "grunt": "0.3.x"
+  }
+}

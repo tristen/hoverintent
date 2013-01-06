@@ -1,9 +1,3 @@
-/*!
- * hoverintent v0.0.1 (2013-01-06)
- * http://tristen.ca/hoverintent
- * Copyright (c) 2013 ; Licensed MIT
-*/
-
 var hoverintent = function(o) {
     var x, y, pX, pY;
     var h = {},

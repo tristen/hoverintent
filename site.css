@@ -51,10 +51,10 @@ body {
   -webkit-font-smoothing:antialiased;
   }
 
-.examples {
+.fixed-700 {
   display:block;
   width:700px;
-  margin:240px auto 0;
+  margin:140px auto 0;
   }
   .examples li {
     background:#10A1CF;
@@ -143,7 +143,7 @@ body {
 	100%  { opacity:1; transform:translateY(0); }
   }
 
-/*On Fade out*/   
+/*On Fade out*/
 @-webkit-keyframes fadeInUpOut {
 	0%    { opacity:1; -webkit-transform:translateY(0); }
 	50%   { opacity:0.75; -webkit-transform:translateY(-35px); }
