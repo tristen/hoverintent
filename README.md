@@ -1,6 +1,6 @@
 # hoverintent
 
-hoverintent is a reworking of Brian Cherne's [hoverintent jQuery plugin](http://cherne.net/brian/resources/jquery.hoverIntent.html)
+hoverintent is a reworking of Brian Cherne's [jQuery plugin](http://cherne.net/brian/resources/jquery.hoverIntent.html)
 in plain javascript. It has no dependencies.
 
 It's goal is to determine a users intention when hovering over an element by triggering a mouseover event when the cursor position
@@ -14,7 +14,7 @@ has slowed down enough.
 <script src='hoverintent.min.js'></script>
 <script>
   var element = document.getElementById('element-id');
-  var hover = hoverintent().hover(element,
+  var h = hoverintent().hover(element,
   function() {
     // Handler in
   }, function() {
@@ -26,7 +26,6 @@ has slowed down enough.
 ## Custom options
 You can adjust mouse sensitivity or the length of time a mouse over/out event is fired:
 
-
 ``` html
 <script src='hoverintent.min.js'></script>
 <script>
@@ -36,18 +35,7 @@ You can adjust mouse sensitivity or the length of time a mouse over/out event is
   };
 
   var element = document.getElementById('element-id');
-  var hover = hoverintent(options).hover(element,
-  function() {
-    // Handler in
-  }, function() {
-    // Handler out
-  });
-</script>
-```
-<script src='hoverintent.min.js'></script>
-<script>
-  var element = document.getElementById('element-id');
-  var hover = hoverintent().hover(element,
+  var h = hoverintent(options).hover(element,
   function() {
     // Handler in
   }, function() {
@@ -84,4 +72,4 @@ Developers can rebuild the minified library by running:
 
 ## Bugs?
 
-[Create an issue](https://github.com/tristen/hoverintent.js/issues)
+[Create an issue](https://github.com/tristen/hoverintent/issues)

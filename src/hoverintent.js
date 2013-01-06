@@ -21,15 +21,12 @@ var hoverintent = function(o) {
     };
 
     // cross-browser events
-    var addEvent = function(object, event, method) {
-        if (object.attachEvent) {
-            object['e'+event+method] = method;
-            object[event+method] = function(){object['e'+event+method](window.event);};
-            object.attachEvent('on'+event, object[event+method]);
-        } else {
-            object.addEventListener(event, method, false);
-        }
-    };
+    function addEvent(object, event, method) {
+        if (object.addEventListener)
+          object.addEventListener(event, method, false);
+        else if(object.attachEvent)
+          object.attachEvent('on'+event, function(){ method(window.event); });
+      }
 
     var removeEvent = function(object, event, method) {
         if (object.detachEvent) {

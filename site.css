@@ -51,11 +51,32 @@ body {
   -webkit-font-smoothing:antialiased;
   }
 
+a {
+  color:#8cdcf5;
+  text-decoration:none;
+  -webkit-transition:color 100ms linear;
+     -moz-transition:color 100ms linear;
+       -o-transition:color 100ms linear;
+          transition:color 100ms linear;
+  }
+  a:hover {
+    color:#fff;
+    }
+
 .fixed-700 {
   display:block;
   width:700px;
-  margin:140px auto 0;
+  margin:70px auto;
   }
+.intro {
+  display:block;
+  padding:0 10px;
+  margin:0 0 40px;
+  font-size:27px;
+  line-height:38px;
+  color:#117999;
+  }
+
   .examples li {
     background:#10A1CF;
     text-align:center;
