@@ -4,7 +4,7 @@
  * Copyright (c) 2013 ; Licensed MIT
 */
 
-var hoverintent = function(o) {
+var hoverintent = function(el, over, out) {
     var x, y, pX, pY;
     var h = {},
         state = 0,
@@ -95,16 +95,14 @@ var hoverintent = function(o) {
     };
 
     // Public methods
-    h.options = merge(o || {}, options);
+    h.options = function(opt) {
+        return merge(opt || {}, options);
+    }
 
-    h.hover = function(el, over, out) {
-        if (el) {
-            addEvent(el, 'mouseover', function(e) { dispatch(e, over, true); });
-            addEvent(el, 'mouseout', function(e) { dispatch(e, out); });
-        }
-
-        return this;
-    };
+    if (el) {
+        addEvent(el, 'mouseover', function(e) { dispatch(e, over, true); });
+        addEvent(el, 'mouseout', function(e) { dispatch(e, out); });
+    }
 
     return h;
 };

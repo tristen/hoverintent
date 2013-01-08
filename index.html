@@ -5,7 +5,7 @@
   <title>Hoverintent | Tristen</title>
   <link href='site.css' rel='stylesheet'>
   <link href='http://tristen.ca/global.css' rel='stylesheet'>
-  <script src='http://tristen.ca/site.js'></script>
+  <!--<script src='http://tristen.ca/site.js'></script>-->
   <script src='hoverintent.js'></script>
 </head>
 <body>
@@ -49,8 +49,8 @@
 </div>
 
 <script>
-  var masthead = new Tristen();
-  masthead.masthead();
+  // var masthead = new Tristen();
+  // masthead.masthead();
 
   // The plain ol hover way
   ///////////////////////////
@@ -75,24 +75,24 @@
 
   // The hoverintent way
   ///////////////////////////
-  var options = {
+  var opts = {
     timeout:500
     }
 
   var second = document.getElementById('second');
   var third = document.getElementById('third');
 
-  var hoverTwo = hoverintent().hover(second, function(e) {
+  var hoverTwo = hoverintent(second, function(e) {
     this.className = 'on';
   }, function(e) {
     this.className = 'off';
   });
 
-  var hoverThree = hoverintent(options).hover(third, function() {
+  var hoverThree = hoverintent(third, function() {
     this.className = 'on';
   }, function(e) {
     this.className = 'off';
-  }, options);
+  }).options(opts);
 
   // Analytics
   var _gaq = _gaq || [];
