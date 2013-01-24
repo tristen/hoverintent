@@ -14,7 +14,7 @@ has slowed down enough.
 <script src='hoverintent.min.js'></script>
 <script>
   var element = document.getElementById('element-id');
-  var h = hoverintent().hover(element,
+  var h = hoverintent(element,
   function() {
     // Handler in
   }, function() {
@@ -29,18 +29,18 @@ You can adjust mouse sensitivity or the length of time a mouse over/out event is
 ``` html
 <script src='hoverintent.min.js'></script>
 <script>
-  var options = {
+  var opts = {
     timeout: 500,
     interval: 50
   };
 
   var element = document.getElementById('element-id');
-  var h = hoverintent(options).hover(element,
+  var h = hoverintent(element,
   function() {
     // Handler in
   }, function() {
     // Handler out
-  });
+  }).options(opts);
 </script>
 ```
 
@@ -60,7 +60,7 @@ $ ender add hoverintent
 Use it:
 
 ``` js
-$('.element').hoverintent().hover(function() {
+$('.element').hoverintent(function() {
     // Handler in
 }, function() {
     // Handler out

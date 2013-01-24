@@ -1,10 +1,10 @@
 /*!
- * hoverintent v0.0.1 (2013-01-06)
+ * hoverintent v0.0.1 (2013-01-15)
  * http://tristen.ca/hoverintent
  * Copyright (c) 2013 ; Licensed MIT
 */
 
-var hoverintent = function(o) {
+var hoverintent = function(el, over, out) {
     var x, y, pX, pY;
     var h = {},
         state = 0,
@@ -14,6 +14,10 @@ var hoverintent = function(o) {
         sensitivity: 7,
         interval: 100,
         timeout: 0
+    };    
+
+    var defaults = function(opt) {
+        options = merge(opt || {}, options);
     };
 
     var merge = function(obj) {
@@ -67,14 +71,14 @@ var hoverintent = function(o) {
             if (state !== 1) {
                 timer = setTimeout(function() {
                     compare(el, event, e);
-                }, h.options.interval);
+                }, options.interval);
             }
         } else {
             removeEvent(el, 'mousemove', track(e));
             if (state === 1) {
                 timer = setTimeout(function() {
                     delay(el, event, e);
-                }, h.options.timeout);
+                }, options.timeout);
             }
         }
         return this;
@@ -82,7 +86,7 @@ var hoverintent = function(o) {
 
     var compare = function(el, overEvent, e) {
         if (timer) timer = clearTimeout(timer);
-        if ((Math.abs(pX - x) + Math.abs(pY - y)) < h.options.sensitivity) {
+        if ((Math.abs(pX - x) + Math.abs(pY - y)) < options.sensitivity) {
             removeEvent(el, 'mousemove', track);
             state = 1;
             return overEvent.call(el, e);
@@ -90,21 +94,20 @@ var hoverintent = function(o) {
             pX = x; pY = y;
             timer = setTimeout(function () {
                 compare(el, overEvent, e);
-            }, h.options.interval);
+            }, options.interval);
         }
     };
 
     // Public methods
-    h.options = merge(o || {}, options);
-
-    h.hover = function(el, over, out) {
-        if (el) {
-            addEvent(el, 'mouseover', function(e) { dispatch(e, over, true); });
-            addEvent(el, 'mouseout', function(e) { dispatch(e, out); });
-        }
-
-        return this;
+    h.options = function(opt) {
+        defaults(opt);
     };
 
+    if (el) {
+        addEvent(el, 'mouseover', function(e) { dispatch(e, over, true); });
+        addEvent(el, 'mouseout', function(e) { dispatch(e, out); });
+    }
+
+    defaults();
     return h;
 };
