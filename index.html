@@ -6,7 +6,6 @@
   <link href='site.css' rel='stylesheet'>
   <link href='http://tristen.ca/global.css' rel='stylesheet'>
   <script src='http://tristen.ca/site.js'></script>
-  <script src='hoverintent.js'></script>
 </head>
 <body>
  <div id='masthead'>
@@ -75,24 +74,22 @@
 
   // The hoverintent way
   ///////////////////////////
-  var options = {
-    timeout:500
-    }
-
   var second = document.getElementById('second');
   var third = document.getElementById('third');
 
-  var hoverTwo = hoverintent().hover(second, function(e) {
+  var hoverTwo = hoverintent(second, function(e) {
     this.className = 'on';
   }, function(e) {
     this.className = 'off';
   });
 
-  var hoverThree = hoverintent(options).hover(third, function() {
+  var hoverThree = hoverintent(third, function() {
     this.className = 'on';
   }, function(e) {
     this.className = 'off';
-  }, options);
+  }).options({
+    timeout:500
+  });
 
   // Analytics
   var _gaq = _gaq || [];

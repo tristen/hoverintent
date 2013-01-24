@@ -1,8 +1,8 @@
 !function ($) {
     $.ender({
-        hoverintent: function (over, out, options) {
+        hoverintent: function (over, out) {
             return this.forEach(function(el) {
-                hoverintent(options).hover(el, over, out);
+                hoverintent(el, over, out).options(opt || {});
             });
         }
     }, true);
