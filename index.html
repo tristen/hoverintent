@@ -5,8 +5,7 @@
   <title>Hoverintent | Tristen</title>
   <link href='site.css' rel='stylesheet'>
   <link href='http://tristen.ca/global.css' rel='stylesheet'>
-  <!--<script src='http://tristen.ca/site.js'></script>-->
-  <script src='hoverintent.js'></script>
+  <script src='http://tristen.ca/site.js'></script>
 </head>
 <body>
  <div id='masthead'>
@@ -75,10 +74,6 @@
 
   // The hoverintent way
   ///////////////////////////
-  var opts = {
-    timeout:500
-    }
-
   var second = document.getElementById('second');
   var third = document.getElementById('third');
 
@@ -92,7 +87,9 @@
     this.className = 'on';
   }, function(e) {
     this.className = 'off';
-  }).options(opts);
+  }).options({
+    timeout:500
+  });
 
   // Analytics
   var _gaq = _gaq || [];
