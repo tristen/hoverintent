@@ -6,7 +6,7 @@ in plain javascript. It has no dependencies.
 It's goal is to determine a users intention when hovering over an element by triggering a mouseover event when the cursor position
 has slowed down enough.
 
-[Check out the demo](http://tristen.ca/hoverintent.js) to see how it works in action.
+[Check out the demo](http://tristen.ca/hoverintent) to see how it works in action.
 
 ## Basic usage
 
