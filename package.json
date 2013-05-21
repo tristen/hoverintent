@@ -1,7 +1,7 @@
 {
   "name": "hoverintent",
   "description": "Fire mouse events when the user intends it",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "tristen <@fallsemo>",
   "ender": "./ender.js",
   "homepage": "http://tristen.ca/hoverintent",
