@@ -9,6 +9,6 @@
     "type": "MIT"
   }],
   "devDependencies": {
-    "grunt": "0.3.x"
+    "uglify-js": "~2.2.5"
   }
 }

@@ -69,13 +69,13 @@ $('.element').hoverintent(function() {
 
 ## Building
 
-hoverintent relies on [Grunt](http://gruntjs.com) as its build tool. Run `grunt` to package code
-from any adjustments you make to `src/hoverintent.js`.
+to manage dependencies and build. Development requires you
+have [node.js](http://nodejs.org) installed.
 
-``` bash
-npm install --dev
-make
-```
+1. [Install node.js](http://nodejs.org/). 'Install' will download a package for
+your OS.
+3. Run `npm install`
+4. Run `make`
 
 ## Licence
 
