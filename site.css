@@ -189,58 +189,6 @@ a {
   }
 
 /*-----------------------------------
-  Code
--------------------------------------*/
-pre,
-code {
-  font-family:Consolas, Menlo, 'Liberation Mono', Courier, monospace;
-  font-weight:normal;
-  word-wrap:break-word;
-  color:#333;
-  }
-pre {
-  font-size:13px;
-  line-height:1.25em;
-  background:#121212;
-  color:#fff;
-  padding:10px 15px;
-  margin:10px 0;
-  overflow: auto;
-  -webkit-box-shadow:0 1px 3px rgba(0, 0, 0, 0.30);
-          box-shadow:0 1px 3px rgba(0, 0, 0, 0.30);
-  }
-
-@media screen {
-  .com { color: #999988; }  /* a comment */
-  .lit, .typ { color: #445588; } /* literal, type */
-  .tag { color: navy; } /* tag */
-  .atv, str { color: #dd1144; } /* attribute, string */
-  .dec, .clo, .opn, .pun, .kwd { color: #333333; } /* a declaration, close bracket, open bracket, punctuation, keyword */
-  .var, .atn { color: teal; } /* variable, markup attribute */
-  .fun { color: #990000; } /* functione */
-  }
-/* Use higher contrast and text-weight for printable form. */
-@media print, projection {
-  .str { color: #060; }
-  .kwd { color: #006; font-weight: bold; }
-  .com { color: #600; font-style: italic; }
-  .typ { color: #404; font-weight: bold; }
-  .lit { color: #044; }
-  .pun, .opn, .clo  { color: #440; }
-  .tag { color: #006; font-weight: bold; }
-  .atn { color: #404; }
-  .atv { color: #060; }
-  }
-/* Style */
-pre.prettyprint {
-  background: white;
-  font-family: Menlo, Monaco, Consolas, monospace;
-  font-size: 12px;
-  line-height: 1.5;
-  padding: 12px 10px;
-  }
-
-/*-----------------------------------
   Lil Helpers
 -------------------------------------*/
 /*Markup free clearing

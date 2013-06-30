@@ -13,8 +13,8 @@ has slowed down enough.
 ``` html
 <script src='hoverintent.min.js'></script>
 <script>
-  var element = document.getElementById('element-id');
-  var h = hoverintent(element,
+  var el = document.getElementById('element-id');
+  hoverintent(el,
   function() {
     // Handler in
   }, function() {
@@ -34,8 +34,8 @@ You can adjust mouse sensitivity or the length of time a mouse over/out event is
     interval: 50
   };
 
-  var element = document.getElementById('element-id');
-  var h = hoverintent(element,
+  var el = document.getElementById('element-id');
+  hoverintent(el,
   function() {
     // Handler in
   }, function() {
