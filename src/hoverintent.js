@@ -107,9 +107,18 @@
             defaults(opt);
         };
 
+        var dispatchOver = function(e) { dispatch(e, over, true); }
+        var dispatchOut = function(e) { dispatch(e, out); }
+
+        h.remove = function() {
+            if (!el) return
+            removeEvent(el, 'mouseover', dispatchOver);
+            removeEvent(el, 'mouseout', dispatchOut);
+        }
+
         if (el) {
-            addEvent(el, 'mouseover', function(e) { dispatch(e, over, true); });
-            addEvent(el, 'mouseout', function(e) { dispatch(e, out); });
+            addEvent(el, 'mouseover', dispatchOver);
+            addEvent(el, 'mouseout', dispatchOut);
         }
 
         defaults();
