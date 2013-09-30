@@ -62,12 +62,15 @@
         var dispatch = function(e, event, over) {
             var el = e.currentTarget;
 
+            var tracker = function() {
+                track(e);
+            };
+
             if (timer) timer = clearTimeout(timer);
             if (over) {
                 pX = e.pageX;
                 pY = e.pageY;
-
-                addEvent(el, 'mousemove', track(e));
+                addEvent(el, 'mousemove', tracker);
 
                 if (state !== 1) {
                     timer = setTimeout(function() {
@@ -75,7 +78,8 @@
                     }, options.interval);
                 }
             } else {
-                removeEvent(el, 'mousemove', track(e));
+                removeEvent(el, 'mousemove', tracker);
+
                 if (state === 1) {
                     timer = setTimeout(function() {
                         delay(el, event, e);
@@ -88,7 +92,6 @@
         var compare = function(el, overEvent, e) {
             if (timer) timer = clearTimeout(timer);
             if ((Math.abs(pX - x) + Math.abs(pY - y)) < options.sensitivity) {
-                removeEvent(el, 'mousemove', track);
                 state = 1;
                 return overEvent.call(el, e);
             } else {
