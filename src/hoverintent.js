@@ -126,6 +126,6 @@
     };
 
     global.hoverintent = hoverintent;
-    if (typeof module !== 'undefined') module.exports = hoverintent;
+    if (typeof module !== 'undefined' && module.exports) module.exports = hoverintent;
 
 })(this);

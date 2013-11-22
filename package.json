@@ -1,5 +1,6 @@
 {
   "name": "hoverintent",
+  "repository": "git@github.com:tristen/hoverintent.git",
   "description": "Fire mouse events when the user intends it",
   "version": "0.2.1",
   "author": "tristen <@fallsemo>",
