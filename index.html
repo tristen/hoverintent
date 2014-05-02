@@ -4,31 +4,8 @@
   <meta charset=utf-8 />
   <title>Hoverintent | Tristen</title>
   <link href='site.css' rel='stylesheet'>
-  <link href='http://tristen.ca/global.css' rel='stylesheet'>
 </head>
 <body>
-
-<div id='masthead'>
-  <div class='limiter col12 clearfix'>
-    <div class='col3'>
-      <div class='inner'>
-        <h2>Tristen Brown</h2>
-        <p>A Coder/Designer at <a href='http://mapbox.com'>MapBox.</a></p>
-        <a href='http://tristen.ca' class='icon home' title='Homepage'>Home</a>
-        <a href='http://tristen.ca/blog' class='icon blog' title='Blog'>Blog</a>
-        <a href='http://twitter.com/fallsemo' class='icon twitter' title='Twitter'>Twitter</a>
-        <a href='http://github.com/tristen' class='icon github' title='GitHub'>Github</a>
-      </div>
-    </div>
-    <div class='col col9'>
-      <div class='inner'>
-        <h3>Projects</h3>
-        <ul id='tristen-projects'></ul>
-      </div>
-    </div>
-    <a href='#' id='t-toggle'><span>t</span></a>
-  </div>
-</div>
 
 <div class='fixed-700'>
   <p class='intro'>Sometimes you want to limit when a mouse event is fired if a user has unintentionaly hovered over an element. <a href='https://github.com/tristen/hoverintent'>hoverintent</a> tracks the sensitivity of a mouse position and fires an event within a threshold. You can also pass additional options that adjusts when an event is triggered. <a href='https://raw.github.com/tristen/hoverintent/gh-pages/dist/hoverintent.min.js'>Download the source</a> and read its <a href='https://github.com/tristen/hoverintent#hoverintent'>usage on GitHub.</a></p>
@@ -48,11 +25,8 @@
   </ul>
 </div>
 
-<script src='http://tristen.ca/site.js'></script>
+<script src='dist/hoverintent.min.js'></script>
 <script>
-  var masthead = new Tristen();
-  masthead.masthead();
-
   // The plain ol hover way
   ///////////////////////////
   var first = document.getElementById('first');
@@ -93,9 +67,6 @@
     timeout:500
   });
 
-</script>
-
-<script>
 var analytics=analytics||[];(function(){var e=["identify","track","trackLink","trackForm","trackClick","trackSubmit","page","pageview","ab","alias","ready","group"],t=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var n=0;n<e.length;n++)analytics[e[n]]=t(e[n])})(),analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)};
 analytics.load("ppyh4q5xb3");
 </script>
