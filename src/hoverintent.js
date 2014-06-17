@@ -60,8 +60,6 @@
         };
 
         var dispatch = function(e, event, over) {
-            var el = e.currentTarget;
-
             var tracker = function() {
                 track(e);
             };
