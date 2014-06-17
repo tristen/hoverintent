@@ -51,7 +51,7 @@
             }
         };
 
-        var track = function(e) { x = e.pageX; y = e.pageY; };
+        var track = function(e) { x = e.clientX; y = e.clientY; };
 
         var delay = function(el, outEvent, e) {
             if (timer) timer = clearTimeout(timer);
@@ -66,8 +66,8 @@
 
             if (timer) timer = clearTimeout(timer);
             if (over) {
-                pX = e.pageX;
-                pY = e.pageY;
+                pX = e.clientX;
+                pY = e.clientY;
                 addEvent(el, 'mousemove', tracker);
 
                 if (state !== 1) {
