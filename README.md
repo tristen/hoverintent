@@ -1,4 +1,5 @@
-# hoverintent
+hoverintent
+---
 
 hoverintent is a reworking of Brian Cherne's [jQuery plugin](http://cherne.net/brian/resources/jquery.hoverIntent.html)
 in plain javascript. It has no dependencies.
@@ -8,7 +9,7 @@ has slowed down enough.
 
 [Check out the demo](http://tristen.ca/hoverintent) to see how it works in action.
 
-## Basic usage
+### Basic usage
 
 ``` html
 <script src='hoverintent.min.js'></script>
@@ -23,7 +24,7 @@ has slowed down enough.
 </script>
 ```
 
-## Custom options
+### Custom options
 You can adjust mouse sensitivity or the length of time a mouse over/out event is fired:
 
 ``` html
@@ -50,16 +51,12 @@ You can adjust mouse sensitivity or the length of time a mouse over/out event is
 | interval | <pre>interval: 100</pre> | The length of time hoverintent waits to re-read mouse coordinates. |
 | timeout | <pre>timeout: 0</pre> | The length of time the mouseout event is fired. |
 
-## Ender support
-Add `hoverintent` as an internal chain method to your [Ender](http://ender.no.de) compilation.
-
-``` shell
-$ ender add hoverintent
-```
-
-Use it:
+### Ender support
+Add `hoverintent` as an internal chain method to your [Ender](https://github.com/ender-js/Ender) compilation.
 
 ``` js
+// ender add hoverintent
+
 $('.element').hoverintent(function() {
     // Handler in
 }, function() {
@@ -67,7 +64,7 @@ $('.element').hoverintent(function() {
 });
 ```
 
-## Building
+### Building
 
 to manage dependencies and build. Development requires you
 have [node.js](http://nodejs.org) installed.
@@ -77,7 +74,7 @@ your OS.
 3. Run `npm install`
 4. Run `make`
 
-## Licence
+### Licence
 
      _____
     < MIT >
@@ -88,6 +85,6 @@ your OS.
                     ||----w |
                     ||     ||
 
-## Bugs?
+### Bugs?
 
 [Create an issue](https://github.com/tristen/hoverintent/issues)
