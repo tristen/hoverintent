@@ -1,16 +1,22 @@
 {
   "name": "hoverintent",
+  "version": "0.2.3",
   "repository": "git@github.com:tristen/hoverintent.git",
   "description": "Fire mouse events when the user intends it",
-  "version": "0.2.2",
-  "author": "tristen <@fallsemo>",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify index.js -s hoverintent | uglifyjs -mc > dist/hoverintent.min.js"
+  },
+  "author": "tristen",
   "ender": "./ender.js",
-  "main": "dist/hoverintent.min.js",
   "homepage": "http://tristen.ca/hoverintent",
-  "licenses": [{
-    "type": "MIT"
-  }],
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
   "devDependencies": {
+    "browserify": "^8.1.1",
     "uglify-js": "~2.2.5"
   }
 }
