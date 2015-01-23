@@ -60,7 +60,7 @@
         };
 
         var dispatch = function(e, event, over) {
-            var tracker = function() {
+            var tracker = function(e) {
                 track(e);
             };
 
