@@ -1,0 +1,20 @@
+{
+  "name": "hoverintent",
+  "description": "Fire mouse events when the user intends it",
+  "main": "index.js",
+  "authors": [
+    "tristen"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/tristen/hoverintent",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
