@@ -1,4 +1,5 @@
 ;(function(global) {
+'use strict';
 
 var hoverintent = function(el, over, out) {
   var x, y, pX, pY;
