@@ -15,10 +15,6 @@ var hoverintent = function(el, over, out) {
     timeout: 0
   };
 
-  function defaults(opt) {
-    options = extend(opt || {}, options);
-  }
-
   function delay(el, outEvent, e) {
     if (timer) timer = clearTimeout(timer);
     state = 0;
@@ -70,7 +66,7 @@ var hoverintent = function(el, over, out) {
 
   // Public methods
   h.options = function(opt) {
-    defaults(opt);
+    options = extend({}, options, opt);
   };
 
   function dispatchOver(e) {
@@ -92,7 +88,6 @@ var hoverintent = function(el, over, out) {
     el.addEventListener('mouseout', dispatchOut, false);
   }
 
-  defaults();
   return h;
 };
 
