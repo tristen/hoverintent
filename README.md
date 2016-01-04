@@ -9,6 +9,12 @@ has slowed down enough.
 
 [Check out the demo](http://tristen.ca/hoverintent) to see how it works in action.
 
+### Browser Support
+
+| <img src="http://i.imgur.com/dJC1GUv.png" width="48px" height="48px" alt="Chrome logo"> | <img src="http://i.imgur.com/o1m5RcQ.png" width="48px" height="48px" alt="Firefox logo"> | <img src="http://i.imgur.com/8h3iz5H.png" width="48px" height="48px" alt="Internet Explorer logo"> | <img src="http://i.imgur.com/iQV4nmJ.png" width="48px" height="48px" alt="Opera logo"> | <img src="http://i.imgur.com/j3tgNKJ.png" width="48px" height="48px" alt="Safari logo"> |
+|:---:|:---:|:---:|:---:|:---:|
+| All ✔ | All ✔ | 9+ ✔ | 7+ ✔ | All ✔ |
+
 ### Basic usage
 
 ``` html
