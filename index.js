@@ -1,6 +1,8 @@
 ;(function(global) {
 'use strict';
 
+var extend = require('xtend');
+
 var hoverintent = function(el, over, out) {
   var x, y, pX, pY;
   var h = {},
@@ -13,34 +15,20 @@ var hoverintent = function(el, over, out) {
     timeout: 0
   };
 
-  var defaults = function(opt) {
-    options = merge(opt || {}, options);
-  };
+  function defaults(opt) {
+    options = extend(opt || {}, options);
+  }
 
-  var merge = function(obj) {
-    for (var i = 1; i < arguments.length; i++) {
-      var def = arguments[i];
-      for (var n in def) {
-        if (obj[n] === undefined) obj[n] = def[n];
-      }
-    }
-    return obj;
-  };
-
-  var track = function(e) {
-    x = e.clientX;
-    y = e.clientY;
-  };
-
-  var delay = function(el, outEvent, e) {
+  function delay(el, outEvent, e) {
     if (timer) timer = clearTimeout(timer);
     state = 0;
     return outEvent.call(el, e);
-  };
+  }
 
-  var dispatch = function(e, event, over) {
+  function dispatch(e, event, over) {
     var tracker = function(e) {
-      track(e);
+      x = e.clientX;
+      y = e.clientY;
     };
 
     if (timer) timer = clearTimeout(timer);
@@ -64,9 +52,9 @@ var hoverintent = function(el, over, out) {
       }
     }
     return this;
-  };
+  }
 
-  var compare = function(el, overEvent, e) {
+  function compare(el, overEvent, e) {
     if (timer) timer = clearTimeout(timer);
     if ((Math.abs(pX - x) + Math.abs(pY - y)) < options.sensitivity) {
       state = 1;
@@ -78,19 +66,20 @@ var hoverintent = function(el, over, out) {
         compare(el, overEvent, e);
       }, options.interval);
     }
-  };
+  }
 
   // Public methods
   h.options = function(opt) {
     defaults(opt);
   };
 
-  var dispatchOver = function(e) {
+  function dispatchOver(e) {
     dispatch(e, over, true);
-  };
-  var dispatchOut = function(e) {
+  }
+
+  function dispatchOut(e) {
     dispatch(e, out);
-  };
+  }
 
   h.remove = function() {
     if (!el) return;
@@ -109,5 +98,4 @@ var hoverintent = function(el, over, out) {
 
 global.hoverintent = hoverintent;
 if (typeof module !== 'undefined' && module.exports) module.exports = hoverintent;
-
 })(this);
