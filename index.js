@@ -27,28 +27,6 @@ var hoverintent = function(el, over, out) {
     return obj;
   };
 
-  // Cross browser events
-  var addEvent = function(object, event, method) {
-    if (object.attachEvent) {
-      object['e' + event + method] = method;
-      object[event + method] = function() {
-        object['e' + event + method](window.event);
-      };
-      object.attachEvent('on' + event, object[event + method]);
-    } else {
-      object.addEventListener(event, method, false);
-    }
-  };
-
-  var removeEvent = function(object, event, method) {
-    if (object.detachEvent) {
-      object.detachEvent('on' + event, object[event + method]);
-      object[event + method] = null;
-    } else {
-      object.removeEventListener(event, method, false);
-    }
-  };
-
   var track = function(e) {
     x = e.clientX;
     y = e.clientY;
@@ -69,7 +47,7 @@ var hoverintent = function(el, over, out) {
     if (over) {
       pX = e.clientX;
       pY = e.clientY;
-      addEvent(el, 'mousemove', tracker);
+      el.addEventListener('mousemove', tracker, false);
 
       if (state !== 1) {
         timer = setTimeout(function() {
@@ -77,7 +55,7 @@ var hoverintent = function(el, over, out) {
         }, options.interval);
       }
     } else {
-      removeEvent(el, 'mousemove', tracker);
+      el.removeEventListener('mousemove', tracker, false);
 
       if (state === 1) {
         timer = setTimeout(function() {
@@ -116,13 +94,13 @@ var hoverintent = function(el, over, out) {
 
   h.remove = function() {
     if (!el) return;
-    removeEvent(el, 'mouseover', dispatchOver);
-    removeEvent(el, 'mouseout', dispatchOut);
+    el.removeEventListener('mouseover', dispatchOver, false);
+    el.removeEventListener('mouseout', dispatchOut, false);
   };
 
   if (el) {
-    addEvent(el, 'mouseover', dispatchOver);
-    addEvent(el, 'mouseout', dispatchOut);
+    el.addEventListener('mouseover', dispatchOver, false);
+    el.addEventListener('mouseout', dispatchOut, false);
   }
 
   defaults();
