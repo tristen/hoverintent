@@ -17,6 +17,8 @@ has slowed down enough.
 
 ### Basic usage
 
+#### Adding hoverintent to an element
+
 ``` html
 <script src='hoverintent.min.js'></script>
 <script>
@@ -27,6 +29,26 @@ has slowed down enough.
   }, function() {
     // Handler out
   });
+</script>
+```
+
+#### Removing hoverintent from an element
+
+``` html
+<script src='hoverintent.min.js'></script>
+<script>
+  var el = document.getElementById('element-id');
+
+  // Save a reference to the method
+  var hoverListener = hoverintent(el,
+  function() {
+    // Handler in
+  }, function() {
+    // Handler out
+  });
+
+  // Remove hoverintent listeners
+  hoverListener.remove();
 </script>
 ```
 
@@ -78,7 +100,7 @@ have [node.js](http://nodejs.org) installed.
 1. [Install node.js](http://nodejs.org/). 'Install' will download a package for
 your OS.
 3. Run `npm install`
-4. Run `make`
+4. Run `npm run build`
 
 ### Licence
 
