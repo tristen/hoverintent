@@ -67,6 +67,7 @@ var hoverintent = function(el, over, out) {
   // Public methods
   h.options = function(opt) {
     options = extend({}, options, opt);
+    return h;
   };
 
   function dispatchOver(e) {
