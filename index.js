@@ -3,7 +3,7 @@
 
 var extend = require('xtend');
 
-var hoverintent = function(el, over, out) {
+var hoverintent = function(el, onOver, onOut) {
   var x, y, pX, pY;
   var h = {},
     state = 0,
@@ -15,51 +15,27 @@ var hoverintent = function(el, over, out) {
     timeout: 0
   };
 
-  function delay(el, outEvent, e) {
+  function delay(el, e) {
     if (timer) timer = clearTimeout(timer);
     state = 0;
-    return outEvent.call(el, e);
+    return onOut.call(el, e);
   }
 
-  function dispatch(e, event, over) {
-    var tracker = function(e) {
-      x = e.clientX;
-      y = e.clientY;
-    };
-
-    if (timer) timer = clearTimeout(timer);
-    if (over) {
-      pX = e.clientX;
-      pY = e.clientY;
-      el.addEventListener('mousemove', tracker, false);
-
-      if (state !== 1) {
-        timer = setTimeout(function() {
-          compare(el, event, e);
-        }, options.interval);
-      }
-    } else {
-      el.removeEventListener('mousemove', tracker, false);
-
-      if (state === 1) {
-        timer = setTimeout(function() {
-          delay(el, event, e);
-        }, options.timeout);
-      }
-    }
-    return this;
+  function tracker(e) {
+    x = e.clientX;
+    y = e.clientY;
   }
 
-  function compare(el, overEvent, e) {
+  function compare(el, e) {
     if (timer) timer = clearTimeout(timer);
     if ((Math.abs(pX - x) + Math.abs(pY - y)) < options.sensitivity) {
       state = 1;
-      return overEvent.call(el, e);
+      return onOver.call(el, e);
     } else {
       pX = x;
       pY = y;
       timer = setTimeout(function() {
-        compare(el, overEvent, e);
+        compare(el, e);
       }, options.interval);
     }
   }
@@ -71,11 +47,34 @@ var hoverintent = function(el, over, out) {
   };
 
   function dispatchOver(e) {
-    dispatch(e, over, true);
+    if (timer) timer = clearTimeout(timer);
+    el.removeEventListener('mousemove', tracker, false);
+
+    if (state !== 1) {
+      pX = e.clientX;
+      pY = e.clientY;
+
+      el.addEventListener('mousemove', tracker, false);
+
+      timer = setTimeout(function() {
+        compare(el, e);
+      }, options.interval);
+    }
+
+    return this;
   }
 
   function dispatchOut(e) {
-    dispatch(e, out);
+    if (timer) timer = clearTimeout(timer);
+    el.removeEventListener('mousemove', tracker, false);
+
+    if (state === 1) {
+      timer = setTimeout(function() {
+        delay(el, e);
+      }, options.timeout);
+    }
+
+    return this;
   }
 
   h.remove = function() {
