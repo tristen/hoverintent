@@ -45,8 +45,7 @@ a {
     margin:0 10px;
     position:relative;
     cursor:pointer;
-    -webkit-border-radius:10px;
-            border-radius:10px;
+    border-radius:10px;
     }
 
 .popup {
@@ -56,24 +55,16 @@ a {
   z-index:1000;
   position:absolute;
   left:50%;
-  bottom:95px;
+  bottom:90px;
   width:170px;
   margin-left:-105px;
   border:none;
   padding:20px;
   font-size:22px;
-  -webkit-animation-duration:500ms;
-     -moz-animation-duration:500ms;
-       -o-animation-duration:500ms;
-          animation-duration:500ms;
-  -webkit-animation-fill-mode:both;
-     -moz-animation-fill-mode:both;
-       -o-animation-fill-mode:both;
-          animation-fill-mode:both;
-  -webkit-box-shadow:0 4px 8px rgba(0,0,0,0.25);
-          box-shadow:0 4px 8px rgba(0,0,0,0.25);
-  -webkit-border-radius:4px;
-          border-radius:4px;
+  animation-duration:500ms;
+  animation-fill-mode:both;
+  box-shadow:0 4px 8px rgba(0,0,0,0.25);
+  border-radius:4px;
   }
   .popup:after {
     top:100%;
@@ -91,55 +82,19 @@ a {
 
 .on .popup {
   display:block;
-  -webkit-animation-name:fadeInUp;
-	   -moz-animation-name:fadeInUp;
-	     -o-animation-name:fadeInUp;
-	        animation-name:fadeInUp;
+  animation-name:fadeInUp;
   }
 .off .popup {
   display:block;
-  -webkit-animation-name:fadeInUpOut;
-	   -moz-animation-name:fadeInUpOut;
-	     -o-animation-name:fadeInUpOut;
-	        animation-name:fadeInUpOut;
+  animation-name:fadeInUpOut;
   }
 
-/*On Fade in*/
-@-webkit-keyframes fadeInUp {
-	0%    { opacity:0; -webkit-transform:translateY(20px); }
-	100%  { opacity:1; -webkit-transform:translateY(0); }
-  }
-@-moz-keyframes fadeInUp {
-  0%    { opacity:0; -moz-transform:translateY(20px); }
-	100%  { opacity:1; -moz-transform:translateY(0); }
-  }
-@-o-keyframes fadeInUp {
-	0%    { opacity:0; -o-transform:translateY(20px); }
-	100%  { opacity:1; -o-transform:translateY(0); }
-  }
 @keyframes fadeInUp {
 	0%    { opacity:0; transform:translateY(20px); }
 	100%  { opacity:1; transform:translateY(0); }
   }
-
-/*On Fade out*/
-@-webkit-keyframes fadeInUpOut {
-	0%    { opacity:1; -webkit-transform:translateY(0); }
-	50%   { opacity:0.75; -webkit-transform:translateY(-15px); }
-	100%  { opacity:0; -webkit-transform:translateY(-15px); }
-  }
-@-moz-keyframes fadeInUpOut {
-  0%    { opacity:1; -moz-transform:translateY(0); }
-	50%   { opacity:0.75; -moz-transform:translateY(-15px); }
-	100%  { opacity:0; -moz-transform:translateY(-15px); }
-  }
-@-o-keyframes fadeInUpOut {
-	0%    { opacity:1; -o-transform:translateY(0); }
-	50%   { opacity:0.75; -o-transform:translateY(-15px); }
-	100%  { opacity:0; -o-transform:translateY(-15px); }
-  }
 @keyframes fadeInUpOut {
-	0%    { opacity:1; transform:translateY(0); }
-	50%   { opacity:0.75; transform:translateY(-15px); }
-	100%  { opacity:0; transform:translateY(-15px); }
+	0%    { opacity:1; }
+	50%   { opacity:0.75; }
+	100%  { opacity:0; }
   }
