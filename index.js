@@ -1,9 +1,8 @@
-;(function(global) {
 'use strict';
 
 var extend = require('xtend');
 
-var hoverintent = function(el, onOver, onOut) {
+module.exports = function(el, onOver, onOut) {
   var x, y, pX, pY;
   var h = {},
     state = 0,
@@ -90,7 +89,3 @@ var hoverintent = function(el, onOver, onOut) {
 
   return h;
 };
-
-global.hoverintent = hoverintent;
-if (typeof module !== 'undefined' && module.exports) module.exports = hoverintent;
-})(this);
