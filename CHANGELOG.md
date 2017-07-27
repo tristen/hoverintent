@@ -1,6 +1,6 @@
 # Changelog
 
-## Head
+## 2.0.0
 
 - Removed UMD definition from `index.js`.
   Now if you `require('hoverintent')`, you get the CommonJS module export.
