@@ -1,4 +1,4 @@
-//'use strict';
+'use strict';
 
 module.exports = function(el, onOver, onOut) {
   var x, y, pX, pY;
