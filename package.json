@@ -5,7 +5,7 @@
   "description": "Fire mouse events when the user intends it",
   "main": "index.js",
   "scripts": {
-    "build": "browserify index.js -s hoverintent | uglifyjs -mc > dist/hoverintent.min.js"
+    "build": "babel index.js | uglifyjs -mc > dist/hoverintent.min.js"
   },
   "author": "tristen",
   "ender": "./ender.js",
@@ -16,10 +16,9 @@
     }
   ],
   "devDependencies": {
-    "browserify": "^12.0.1",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
+    "babel-plugin-transform-object-assign": "^6.22.0",
     "uglify-js": "^2.6.1"
-  },
-  "dependencies": {
-    "xtend": "^4.0.1"
   }
 }

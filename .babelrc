@@ -1,0 +1,4 @@
+{
+  "plugins": ["transform-object-assign", "transform-es2015-modules-umd"],
+  "moduleId": "hoverintent"
+}
