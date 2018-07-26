@@ -1,7 +1,5 @@
 'use strict';
 
-var extend = require('xtend');
-
 module.exports = function(el, onOver, onOut) {
   var x, y, pX, pY;
   var h = {},
@@ -41,7 +39,7 @@ module.exports = function(el, onOver, onOut) {
 
   // Public methods
   h.options = function(opt) {
-    options = extend({}, options, opt);
+    options = Object.assign({}, options, opt);
     return h;
   };
 
