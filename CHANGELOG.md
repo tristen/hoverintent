@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.0
+
+- Removed `xtend` dependency [#24](https://github.com/tristen/hoverintent/pull/24).
+
 ## 2.0.0
 
 - Removed UMD definition from `index.js`.
