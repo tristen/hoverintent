@@ -10,15 +10,15 @@
 <div class='fixed-700'>
   <p class='intro'>Sometimes you want to limit when a mouse event is fired if a user has unintentionaly hovered over an element. <a href='https://github.com/tristen/hoverintent'>hoverintent</a> tracks the sensitivity of a mouse position and fires an event within a threshold. You can also pass additional options that adjusts when an event is triggered. <a href='https://raw.github.com/tristen/hoverintent/gh-pages/dist/hoverintent.min.js'>Download the source</a> and read its <a href='https://github.com/tristen/hoverintent#hoverintent'>usage on GitHub.</a></p>
   <ul class='examples'>
-    <li id='first'>
+    <li id='first' tabindex="0">
       Plain old hover
       <span class='popup'>Hi there</span>
     </li>
-    <li id='second'>
+    <li id='second' tabindex="0">
       hoverintent
       <span class='popup'>Hi there</span>
     </li>
-    <li id='third'>
+    <li id='third' tabindex="0">
       Custom settings
       <span class='popup'>Hi there</span>
     </li>
@@ -64,7 +64,8 @@
   }, function(e) {
     this.className = 'off';
   }).options({
-    timeout:500
+    timeout:500,
+    handleFocus: true
   });
 
 var analytics=analytics||[];(function(){var e=["identify","track","trackLink","trackForm","trackClick","trackSubmit","page","pageview","ab","alias","ready","group"],t=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var n=0;n<e.length;n++)analytics[e[n]]=t(e[n])})(),analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)};

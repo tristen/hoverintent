@@ -2,6 +2,7 @@
 
 module.exports = function(el, onOver, onOut) {
   var x, y, pX, pY;
+  var mouseOver = false;
   var h = {},
     state = 0,
     timer = 0;
@@ -9,7 +10,8 @@ module.exports = function(el, onOver, onOut) {
   var options = {
     sensitivity: 7,
     interval: 100,
-    timeout: 0
+    timeout: 0,
+    handleFocus: false
   };
 
   function delay(el, e) {
@@ -39,11 +41,16 @@ module.exports = function(el, onOver, onOut) {
 
   // Public methods
   h.options = function(opt) {
+    var focusOptionChanged = opt.handleFocus !== options.handleFocus;
     options = Object.assign({}, options, opt);
+    if (focusOptionChanged) {
+      options.handleFocus ? addFocus() : removeFocus();
+    }
     return h;
   };
 
   function dispatchOver(e) {
+    mouseOver = true;
     if (timer) timer = clearTimeout(timer);
     el.removeEventListener('mousemove', tracker, false);
 
@@ -62,6 +69,7 @@ module.exports = function(el, onOver, onOut) {
   }
 
   function dispatchOut(e) {
+    mouseOver = false;
     if (timer) timer = clearTimeout(timer);
     el.removeEventListener('mousemove', tracker, false);
 
@@ -74,10 +82,33 @@ module.exports = function(el, onOver, onOut) {
     return this;
   }
 
+  function dispatchFocus(e) {
+    if (!mouseOver) {
+      onOver.call(el, e);
+    }
+  }
+
+  function dispatchBlur(e) {
+    if (!mouseOver) {
+      onOut.call(el, e);
+    }
+  }
+
+  function addFocus() {
+    el.addEventListener('focus', dispatchFocus, false);
+    el.addEventListener('blur', dispatchBlur, false);
+  }
+
+  function removeFocus() {
+    el.removeEventListener('focus', dispatchFocus, false);
+    el.removeEventListener('blur', dispatchBlur, false);
+  }
+
   h.remove = function() {
     if (!el) return;
     el.removeEventListener('mouseover', dispatchOver, false);
     el.removeEventListener('mouseout', dispatchOut, false);
+    removeFocus();
   };
 
   if (el) {
