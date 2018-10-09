@@ -3,6 +3,7 @@
 module.exports = function(el, onOver, onOut) {
   var x, y, pX, pY;
   var mouseOver = false;
+  var focused = false;
   var h = {},
     state = 0,
     timer = 0;
@@ -17,7 +18,7 @@ module.exports = function(el, onOver, onOut) {
   function delay(el, e) {
     if (timer) timer = clearTimeout(timer);
     state = 0;
-    return onOut.call(el, e);
+    return focused ? undefined : onOut.call(el, e);
   }
 
   function tracker(e) {
@@ -29,7 +30,7 @@ module.exports = function(el, onOver, onOut) {
     if (timer) timer = clearTimeout(timer);
     if ((Math.abs(pX - x) + Math.abs(pY - y)) < options.sensitivity) {
       state = 1;
-      return onOver.call(el, e);
+      return focused ? undefined : onOver.call(el, e);
     } else {
       pX = x;
       pY = y;
@@ -84,12 +85,14 @@ module.exports = function(el, onOver, onOut) {
 
   function dispatchFocus(e) {
     if (!mouseOver) {
+      focused = true;
       onOver.call(el, e);
     }
   }
 
   function dispatchBlur(e) {
-    if (!mouseOver) {
+    if (!mouseOver && focused) {
+      focused = false;
       onOut.call(el, e);
     }
   }
