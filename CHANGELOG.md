@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.2.0
+
+- `handleFocus` option added to trigger onOver/onOut callbacks during keyboard navigation [#25](https://github.com/tristen/hoverintent/pull/25).
+
 ## 2.1.0
 
 - Removed `xtend` dependency [#24](https://github.com/tristen/hoverintent/pull/24).
