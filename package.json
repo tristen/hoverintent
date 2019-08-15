@@ -1,6 +1,6 @@
 {
   "name": "hoverintent",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "repository": "git@github.com:tristen/hoverintent.git",
   "description": "Fire mouse events when the user intends it",
   "main": "index.js",

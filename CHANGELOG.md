@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.2.1
+
+- Package bump to devdependency on lodash.
+- Limit the number of published files [#29](https://github.com/tristen/hoverintent/pull/29).
+
 ## 2.2.0
 
 - `handleFocus` option added to trigger onOver/onOut callbacks during keyboard navigation [#25](https://github.com/tristen/hoverintent/pull/25).
