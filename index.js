@@ -40,16 +40,6 @@ module.exports = function(el, onOver, onOut) {
     }
   }
 
-  // Public methods
-  h.options = function(opt) {
-    var focusOptionChanged = opt.handleFocus !== options.handleFocus;
-    options = Object.assign({}, options, opt);
-    if (focusOptionChanged) {
-      options.handleFocus ? addFocus() : removeFocus();
-    }
-    return h;
-  };
-
   function dispatchOver(e) {
     mouseOver = true;
     if (timer) timer = clearTimeout(timer);
@@ -107,6 +97,21 @@ module.exports = function(el, onOver, onOut) {
     el.removeEventListener('blur', dispatchBlur, false);
   }
 
+  if (el) {
+    el.addEventListener('mouseover', dispatchOver, false);
+    el.addEventListener('mouseout', dispatchOut, false);
+  }
+
+  // Public methods
+  h.options = function(opt) {
+    var focusOptionChanged = opt.handleFocus !== options.handleFocus;
+    options = Object.assign({}, options, opt);
+    if (focusOptionChanged) {
+      options.handleFocus ? addFocus() : removeFocus();
+    }
+    return h;
+  };
+
   h.remove = function() {
     if (!el) return;
     el.removeEventListener('mouseover', dispatchOver, false);
@@ -114,9 +119,9 @@ module.exports = function(el, onOver, onOut) {
     removeFocus();
   };
 
-  if (el) {
-    el.addEventListener('mouseover', dispatchOver, false);
-    el.addEventListener('mouseout', dispatchOut, false);
+  h.reset = function(){
+    state = 1;
+    dispatchOut();
   }
 
   return h;
