@@ -3,6 +3,10 @@
   "version": "2.2.1",
   "repository": "git@github.com:tristen/hoverintent.git",
   "description": "Fire mouse events when the user intends it",
+  "engine-strict": true,
+  "engines": {
+    "node": "^10.0.0"
+  },
   "main": "index.js",
   "scripts": {
     "build": "babel index.js | uglifyjs -mc > dist/hoverintent.min.js"
