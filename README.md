@@ -78,7 +78,7 @@ You can adjust mouse sensitivity or the length of time a mouse over/out event is
 | sensitivity | <pre>sensitivity: 7</pre> | The value (in pixels) the mouse cursor should not travel beyond while hoverintent waits to trigger the mouseover event. |
 | interval | <pre>interval: 100</pre> | The length of time (in milliseconds) hoverintent waits to re-read mouse coordinates. |
 | timeout | <pre>timeout: 0</pre> | The length of time (in milliseconds) before the `mouseout` event is fired. |
-| handleFocus | <pre>timeout: false</pre> | Adds onOver/onOut callbacks to keyboard navigation during blur and focus events |
+| handleFocus | <pre>handleFocus: false</pre> | Adds onOver/onOut callbacks to keyboard navigation during blur and focus events |
 
 ### Ender support
 Add `hoverintent` as an internal chain method to your [Ender](https://github.com/ender-js/Ender) compilation.
