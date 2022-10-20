@@ -107,8 +107,12 @@ module.exports = function(el, onOver, onOut) {
     el.removeEventListener('blur', dispatchBlur, false);
   }
 
-  h.remove = function() {
+  h.remove = function(reset) {
     if (!el) return;
+    if (reset === true) {
+      state = 1;
+      dispatchOut();
+    }
     el.removeEventListener('mouseover', dispatchOver, false);
     el.removeEventListener('mouseout', dispatchOut, false);
     removeFocus();

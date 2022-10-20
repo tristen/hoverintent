@@ -49,6 +49,9 @@ has slowed down enough.
 
   // Remove hoverintent listeners
   hoverListener.remove();
+
+  // Remove hoverintent and fire the out handler
+  hoverListener.remove(true);
 </script>
 ```
 
