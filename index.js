@@ -40,6 +40,22 @@ module.exports = function(el, onOver, onOut) {
     }
   }
 
+  function addMouseMoveEventListener(element) {
+    const target = element.tagName.toLowerCase() === 'iframe' && element.contentDocument
+        ? element.contentDocument
+        : element;
+
+    target.addEventListener('mousemove', tracker, false);
+  }
+
+  function removeMouseMoveEventListener(element) {
+    const target = element.tagName.toLowerCase() === 'iframe' && element.contentDocument
+        ? element.contentDocument
+        : element;
+
+    target.removeEventListener('mousemove', tracker, false);
+  }
+
   // Public methods
   h.options = function(opt) {
     var focusOptionChanged = opt.handleFocus !== options.handleFocus;
@@ -53,13 +69,13 @@ module.exports = function(el, onOver, onOut) {
   function dispatchOver(e) {
     mouseOver = true;
     if (timer) timer = clearTimeout(timer);
-    el.removeEventListener('mousemove', tracker, false);
+    removeMouseMoveEventListener(el);
 
     if (state !== 1) {
       pX = e.clientX;
       pY = e.clientY;
 
-      el.addEventListener('mousemove', tracker, false);
+      addMouseMoveEventListener(el);
 
       timer = setTimeout(function() {
         compare(el, e);
@@ -72,7 +88,7 @@ module.exports = function(el, onOver, onOut) {
   function dispatchOut(e) {
     mouseOver = false;
     if (timer) timer = clearTimeout(timer);
-    el.removeEventListener('mousemove', tracker, false);
+    removeMouseMoveEventListener(el);
 
     if (state === 1) {
       timer = setTimeout(function() {
